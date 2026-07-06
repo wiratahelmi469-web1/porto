@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>helmi // Full-Stack Web Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Website portofolio resmi Helmi - Full-Stack Web Developer spesialis ekosistem Laravel, Next.js, dan UI/UX design.">
+    <meta name="keywords" content="Helmi, Web Developer, Laravel, Next.js, STT Terpadu Nurul Fikri, Indonesia, Portfolio">
+    <meta name="author" content="Helmi">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="helmi // Full-Stack Web Developer">
+    <meta property="og:description" content="Website portofolio resmi Helmi - Full-Stack Web Developer spesialis ekosistem Laravel, Next.js, dan UI/UX design.">
+    <meta property="og:url" content="https://github.com/wiratahelmi469-web1">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="helmi // Full-Stack Web Developer">
+    <meta name="twitter:description" content="Website portofolio resmi Helmi - Full-Stack Web Developer spesialis ekosistem Laravel, Next.js, dan UI/UX design.">
+
+    <!-- Favicon (Terminal Icon >_) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22monospace%22 fill=%22%2300D4AA%22 font-weight=%22bold%22>&gt;_</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: {
+                            primary: '#0A0E1A',
+                            card: '#111827',
+                            subtle: '#161D2E',
+                        },
+                        accent: {
+                            teal: '#00D4AA',
+                            orange: '#FF6B35',
+                        },
+                        text: {
+                            main: '#E8F4F8',
+                            muted: '#6B8FAB',
+                        },
+                        border: {
+                            subtle: 'rgba(0, 212, 170, 0.12)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Tailwind Styles & Keyframes -->
+    <style type="text/css">
+        @layer base {
+            body {
+                background-color: #0A0E1A;
+                color: #E8F4F8;
+                font-family: 'Inter', sans-serif;
+            }
+        }
+
+        /* Hero grid mesh line backgrounds */
+        .hero-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+        }
+
+        /* Terminal blinking cursor */
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .animate-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Custom Reveal transition styling */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="selection:bg-accent-teal/30 selection:text-white antialiased">
+
+    <!-- 1. HEADER / NAVIGATION -->
+    <nav class="fixed top-0 inset-x-0 z-50 bg-bg-primary/70 backdrop-blur-md border-b border-border-subtle transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            {/* Branding Logo */}
+            <a href="#top" class="font-mono text-sm font-semibold tracking-tight text-text-main hover:text-accent-teal transition-all duration-300 flex items-center space-x-2">
+                <span class="text-accent-teal font-extrabold">&lt;</span>
+                <span>helmi // dev</span>
+                <span class="text-accent-teal font-extrabold">&gt;</span>
+            </a>
+
+            {/* Navigation links (Desktop) */}
+            <div class="hidden md:flex items-center space-x-8 font-mono text-xs">
+                <a href="#about" class="text-text-muted hover:text-accent-teal transition-colors py-2">
+                    // tentang
+                </a>
+                <a href="#skills" class="text-text-muted hover:text-accent-teal transition-colors py-2">
+                    // keahlian
+                </a>
+                <a href="#projects" class="text-text-muted hover:text-accent-teal transition-colors py-2">
+                    // proyek
+                </a>
+                <a href="#contact" class="px-4 py-2 rounded border border-accent-teal/25 text-accent-teal hover:bg-accent-teal/5 hover:border-accent-teal transition-all duration-300">
+                    // kontak
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="p-2 text-text-muted hover:text-accent-teal focus:outline-none transition-colors" aria-label="Toggle Navigation Menu">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-card font-mono border-b border-border-subtle shadow-2xl py-6 px-6 flex flex-col space-y-4">
+            <a href="#about" class="mobile-link text-sm tracking-wide text-text-muted hover:text-accent-teal py-2 border-b border-border-subtle/50">// tentang</a>
+            <a href="#skills" class="mobile-link text-sm tracking-wide text-text-muted hover:text-accent-teal py-2 border-b border-border-subtle/50">// keahlian</a>
+            <a href="#projects" class="mobile-link text-sm tracking-wide text-text-muted hover:text-accent-teal py-2 border-b border-border-subtle/50">// proyek</a>
+            <a href="#contact" class="mobile-link text-sm tracking-wide text-accent-teal hover:text-accent-teal py-2">// kontak</a>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION -->
+    <section id="top" class="relative min-h-screen pt-32 pb-20 flex flex-col justify-center items-center overflow-hidden">
+        <!-- Radial Lighting Accents -->
+        <div class="absolute top-1/4 right-[10%] w-[320px] md:w-[500px] h-[320px] md:h-[500px] rounded-full bg-accent-teal/5 blur-[90px] md:blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 left-[5%] w-[320px] md:w-[480px] h-[320px] md:h-[480px] rounded-full bg-accent-orange/4 blur-[90px] md:blur-[120px] pointer-events-none"></div>
+        
+        <!-- Background Grid -->
+        <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative w-full flex flex-col items-center">
+            
+            <!-- macOS Style Terminal Card -->
+            <div class="reveal w-full max-w-2xl bg-bg-card border border-border-subtle rounded-xl overflow-hidden shadow-2xl mb-12">
+                <!-- Header Title Bar -->
+                <div class="bg-[#161D2E] px-4 py-3 flex items-center justify-between border-b border-border-subtle">
+                    <div class="flex space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-[#FF5F57] inline-block shadow-inner"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#FEBC2E] inline-block shadow-inner"></span>
+                        <span class="w-3 h-3 rounded-full bg-[#28C840] inline-block shadow-inner"></span>
+                    </div>
+                    <span class="font-mono text-xs text-text-muted tracking-tight select-none">
+                        helmi@portfolio ~ zsh
+                    </span>
+                    <div class="w-12"></div>
+                </div>
+
+                <!-- Interactive Command typing block -->
+                <div class="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed min-h-[200px] text-text-main flex flex-col justify-start">
+                    <div id="terminal-content" class="space-y-2">
+                        <!-- Filled dynamically by typing script -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bold Typographic Headline -->
+            <div class="reveal text-center max-w-3xl mb-6">
+                <h1 class="font-serif font-black tracking-tight leading-[1.1] text-text-main text-center" style="font-size: clamp(2.3rem, 5vw, 3.8rem)">
+                    Membangun aplikasi web <br>
+                    yang <span class="text-accent-teal relative inline-block">berdampak</span> &amp; <br class="hidden sm:inline">
+                    <span class="text-accent-orange">skalabel.</span>
+                </h1>
+            </div>
+
+            <!-- Headline Subtitle Description -->
+            <p class="reveal text-center text-text-muted max-w-xl text-base md:text-lg font-sans leading-relaxed mb-10">
+                Mahasiswa yang berspesialisasi dalam ekosistem Laravel dan Next.js — dari database relasional murni hingga dashboard admin modern.
+            </p>
+
+            <!-- Buttons Call to Action -->
+            <div class="reveal flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-lg bg-accent-teal text-bg-primary font-sans font-semibold tracking-wide text-sm text-center shadow-lg shadow-accent-teal/15 hover:shadow-accent-teal/30 hover:-translate-y-1 transition-all duration-300">
+                    Lihat Proyek
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-lg border border-border-subtle text-text-main font-sans font-medium text-sm text-center hover:border-accent-teal hover:bg-accent-teal/5 transition-all duration-300">
+                    Hubungi Saya
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. ABOUT SECTION -->
+    <section id="about" class="py-24 bg-bg-subtle border-y border-border-subtle">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Profile bio description -->
+                <div class="reveal lg:col-span-7 space-y-6">
+                    <span class="font-mono text-xs uppercase tracking-wider text-accent-teal block">
+                        — Tentang Saya
+                    </span>
+                    <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-text-main leading-tight">
+                        Seorang developer yang suka detail.
+                    </h2>
+                    
+                    <div class="w-10 h-[3px] rounded bg-gradient-to-r from-accent-teal to-accent-orange mb-6"></div>
+
+                    <div class="space-y-5 font-sans text-[#CDDEE9] text-base md:text-[1.05rem] leading-relaxed">
+                        <p>
+                            Saya <strong class="text-text-main font-semibold">Helmi</strong>, mahasiswa yang fokus membangun aplikasi web full-stack menggunakan ekosistem Laravel. Saya percaya bahwa kode yang baik bukan hanya yang bekerja, tapi yang mudah dipahami dan dipelihara.
+                        </p>
+                        <p>
+                            Proyek utama saya, <strong class="text-accent-teal font-medium">OutdoorRent</strong>, adalah sistem penyewaan perlengkapan outdoor berbasis web — dibangun dengan Laravel 12, Filament 5, dan MySQL lengkap dengan manajemen role via Spatie Permission.
+                        </p>
+                        <p>
+                            Di samping coding, saya memiliki ketertarikan kuat pada bidang <strong class="text-accent-orange font-medium">UI/UX Design</strong> untuk merancang antarmuka yang intuitif dan fungsional. Saya juga mendalami arsitektur database yang solid — mulai dari view, trigger, stored procedure, hingga privilege management.
+                        </p>
+                    </div>
+
+                    <!-- Education Sub-card -->
+                    <div class="pt-6 border-t border-border-subtle/40">
+                        <h4 class="font-mono text-xs uppercase tracking-wider text-accent-orange mb-3 flex items-center gap-1.5">
+                            <!-- book icon svg -->
+                            <svg class="w-3.5 h-3.5 text-accent-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+                            </svg>
+                            Pendidikan
+                        </h4>
+                        <div class="bg-bg-card/40 border border-border-subtle/50 rounded-xl p-4 flex items-start gap-3">
+                            <div class="p-2 rounded bg-accent-teal/10 text-accent-teal font-mono text-xs font-bold shrink-0">
+                                2025
+                            </div>
+                            <div>
+                                <h5 class="font-sans font-semibold text-text-main text-sm">STT Terpadu Nurul Fikri, Bogor</h5>
+                                <p class="font-sans text-xs text-[#AECCD9] mt-0.5">Informatika (2025 — Sekarang)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Counters -->
+                <div class="reveal lg:col-span-5 grid grid-cols-2 gap-4 w-full lg:pt-8">
+                    <div class="bg-bg-card border border-border-subtle rounded-xl p-6 transition-all duration-300 hover:border-accent-teal/35 group hover:bg-[#111c2e]">
+                        <div class="font-serif text-3xl md:text-4xl font-extrabold text-accent-teal mb-2 group-hover:scale-105 transition-transform duration-300">9+</div>
+                        <div class="font-sans text-xs md:text-sm text-text-muted leading-snug">Tabel Database Terstruktur</div>
+                    </div>
+                    <div class="bg-bg-card border border-border-subtle rounded-xl p-6 transition-all duration-300 hover:border-accent-teal/35 group hover:bg-[#111c2e]">
+                        <div class="font-serif text-3xl md:text-4xl font-extrabold text-accent-teal mb-2 group-hover:scale-105 transition-transform duration-300">3</div>
+                        <div class="font-sans text-xs md:text-sm text-text-muted leading-snug">Role Pengguna Sistem</div>
+                    </div>
+                    <div class="bg-bg-card border border-border-subtle rounded-xl p-6 transition-all duration-300 hover:border-accent-teal/35 group hover:bg-[#111c2e]">
+                        <div class="font-serif text-3xl md:text-4xl font-extrabold text-accent-teal mb-2 group-hover:scale-105 transition-transform duration-300">4+</div>
+                        <div class="font-sans text-xs md:text-sm text-text-muted leading-snug">Dashboard Widget</div>
+                    </div>
+                    <div class="bg-bg-card border border-border-subtle rounded-xl p-6 transition-all duration-300 hover:border-accent-teal/35 group hover:bg-[#111c2e]">
+                        <div class="font-serif text-3xl md:text-4xl font-extrabold text-accent-teal mb-2 group-hover:scale-105 transition-transform duration-300">4+</div>
+                        <div class="font-sans text-xs md:text-sm text-text-muted leading-snug">Proyek Kompleks Selesai</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SKILLS SECTION -->
+    <section id="skills" class="py-24 bg-bg-primary relative">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="reveal space-y-4 mb-16 text-left">
+                <span class="font-mono text-xs uppercase tracking-wider text-accent-teal block">
+                    — Keahlian
+                </span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-text-main">
+                    Kemampuan Teknis
+                </h2>
+                <div class="w-10 h-[3px] rounded bg-gradient-to-r from-accent-teal to-accent-orange"></div>
+            </div>
+
+            <!-- Skill Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Skill 1 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-accent-orange/10 text-accent-orange group-hover:scale-110 transition-transform duration-300">
+                            <!-- Cpu SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Laravel 12</span>
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">PHP</span>
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">REST API</span>
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Eloquent ORM</span>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-accent-orange/10 text-accent-orange group-hover:scale-110 transition-transform duration-300">
+                            <!-- Layers SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Admin Panel</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Filament 5</span>
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Spatie Permission</span>
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Widgets</span>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-accent-teal/10 text-accent-teal group-hover:scale-110 transition-transform duration-300">
+                            <!-- Database SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Database</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-accent-teal/12 text-accent-teal border border-accent-teal/15 rounded-full text-xs font-mono font-medium">MySQL</span>
+                        <span class="px-3 py-1 bg-accent-teal/12 text-accent-teal border border-accent-teal/15 rounded-full text-xs font-mono font-medium">Stored Procedure</span>
+                        <span class="px-3 py-1 bg-accent-teal/12 text-accent-teal border border-accent-teal/15 rounded-full text-xs font-mono font-medium">Trigger</span>
+                        <span class="px-3 py-1 bg-accent-teal/12 text-accent-teal border border-accent-teal/15 rounded-full text-xs font-mono font-medium">View</span>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-text-muted/10 text-text-muted group-hover:scale-110 transition-transform duration-300">
+                            <!-- Monitor SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">Next.js</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">React</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">HTML/CSS/JS</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-accent-teal/5 text-text-muted group-hover:scale-110 transition-transform duration-300">
+                            <!-- Git SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="18" cy="18" r="3"></circle>
+                                <circle cx="6" cy="6" r="3"></circle>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <path d="M18 15V9a4 4 0 00-4-4H9M6 9v6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Integrasi</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-accent-orange/12 text-accent-orange border border-accent-orange/15 rounded-full text-xs font-mono font-medium">Midtrans</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">Git/GitHub</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">Composer</span>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="reveal bg-bg-card border border-border-subtle rounded-xl p-6 hover:-translate-y-1 hover:border-accent-teal/35 transition-all duration-300 relative group overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-text-muted/10 text-text-muted group-hover:scale-110 transition-transform duration-300">
+                            <!-- BookOpen SVG -->
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-sans font-semibold text-lg text-text-main">Konsep</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">MVC Pattern</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">RBAC</span>
+                        <span class="px-3 py-1 bg-text-muted/12 text-text-muted border border-text-muted/15 rounded-full text-xs font-mono font-medium">UI/UX Design</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PROJECTS SECTION -->
+    <section id="projects" class="py-24 bg-bg-subtle border-y border-border-subtle">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="reveal space-y-4 mb-16 text-left">
+                <span class="font-mono text-xs uppercase tracking-wider text-accent-teal block">
+                    — Galeri Proyek
+                </span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-text-main">
+                    Pekerjaan Terpilih
+                </h2>
+                <div class="w-10 h-[3px] rounded bg-gradient-to-r from-accent-teal to-accent-orange"></div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                
+                <!-- Project 1: EventHub Kampus -->
+                <div class="reveal group bg-bg-card border border-border-subtle rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-2 hover:shadow-accent-teal/5 transition-all duration-300">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl md:text-2xl" role="img" aria-label="ticket icon">🎟️</span>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-accent-teal bg-accent-teal/10 px-2 py-0.5 rounded">
+                                Web Platform
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-text-main group-hover:text-accent-teal transition-colors">
+                            EventHub Kampus
+                        </h3>
+                        <p class="font-sans text-sm text-[#AECCD9] leading-relaxed">
+                            Platform manajemen event kampus berbasis Next.js untuk Universitas Nurul Fikri, dengan dashboard multi-role (mahasiswa, panitia, PO, staf kemahasiswaan), presensi via QR code, generate sertifikat digital otomatis, dan alur persetujuan anggaran (RAB) bertingkat.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">Next.js</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">React</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">Tailwind CSS</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">html5-qrcode</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">jsPDF</span>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 bg-bg-subtle border-t border-border-subtle/40 flex items-center justify-between">
+                        <a href="https://github.com/wiratahelmi469-web1/prototipe" target="_blank" rel="noreferrer" class="font-mono text-xs font-medium text-accent-teal flex items-center space-x-1.5 hover:underline">
+                            <!-- Github icon svg -->
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://prototipe-one.vercel.app" target="_blank" rel="noreferrer" class="font-mono text-xs font-medium text-accent-orange flex items-center space-x-1.5 hover:underline">
+                            <!-- external link svg -->
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            <span>Live Demo</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: OutdoorRent -->
+                <div class="reveal group bg-bg-card border border-border-subtle rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-2 hover:shadow-accent-teal/5 transition-all duration-300">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl md:text-2xl" role="img" aria-label="outdoor icon">🏕️</span>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-accent-orange bg-accent-orange/10 px-2 py-0.5 rounded">
+                                Featured Project
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-text-main group-hover:text-accent-teal transition-colors">
+                            OutdoorRent
+                        </h3>
+                        <p class="font-sans text-sm text-[#AECCD9] leading-relaxed">
+                            Sistem penyewaan perlengkapan outdoor berbasis web. Dilengkapi manajemen stok, pembayaran via Midtrans, tiga role pengguna (super_admin, admin, customer), dan dashboard analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">Laravel 12</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono font-semibold text-accent-orange">Filament 5</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">MySQL</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">Midtrans</span>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 bg-bg-subtle border-t border-border-subtle/40 flex items-center justify-between">
+                        <a href="https://github.com/wiratahelmi469-web1/OutdoorRent" target="_blank" rel="noreferrer" class="font-mono text-xs font-medium text-accent-teal flex items-center space-x-1.5 hover:underline">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <span class="font-mono text-xs text-accent-orange/80 flex items-center space-x-1.5 bg-accent-orange/10 px-2.5 py-1 rounded border border-accent-orange/15">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-orange animate-pulse"></span>
+                            <span>In Development</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Basis Data -->
+                <div class="reveal group bg-bg-card border border-border-subtle rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-2 hover:shadow-accent-teal/5 transition-all duration-300">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl md:text-2xl" role="img" aria-label="database icon">🗄️</span>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-[#B0D3FB] bg-[#B0D3FB]/10 px-2 py-0.5 rounded">
+                                Relational DB
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-text-main group-hover:text-accent-teal transition-colors">
+                            Basis Data — peminjaman_outdoor
+                        </h3>
+                        <p class="font-sans text-sm text-[#AECCD9] leading-relaxed">
+                            Implementasi database relasional murni untuk studi kasus penyewaan outdoor. Mencakup tiga view, tiga stored procedure, empat trigger (AFTER UPDATE, BEFORE INSERT, AFTER INSERT), dan dua user MySQL dengan privilege terpisah.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">MySQL</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">Trigger</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono font-semibold text-accent-teal">Stored Proc</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">View</span>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 bg-bg-subtle border-t border-border-subtle/40 flex items-center justify-start">
+                        <a href="https://github.com/wiratahelmi469-web1" target="_blank" rel="noreferrer" class="font-mono text-xs font-medium text-accent-teal flex items-center space-x-1.5 hover:underline">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                            <span>GitHub Repository</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Portofolio -->
+                <div class="reveal group bg-bg-card border border-border-subtle rounded-2xl flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-2 hover:shadow-accent-teal/5 transition-all duration-300">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl md:text-2xl" role="img" aria-label="web icon">🌐</span>
+                            <span class="text-[10px] uppercase font-mono tracking-widest text-[#00D4AA] bg-[#00D4AA]/10 px-2 py-0.5 rounded">
+                                Web static
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-text-main group-hover:text-accent-teal transition-colors">
+                            Portofolio Helmi
+                        </h3>
+                        <p class="font-sans text-sm text-[#AECCD9] leading-relaxed">
+                            Website portofolio statis yang di-deploy di Vercel. Dibangun dengan HTML, CSS, dan JavaScript vanilla — tanpa framework, load cepat, sepenuhnya responsif.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="text-[11px] font-mono text-text-muted">HTML</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">CSS</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono text-text-muted">JavaScript</span>
+                            <span class="text-text-muted text-[11px] font-mono">•</span>
+                            <span class="text-[11px] font-mono font-semibold text-accent-orange">Vercel</span>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 bg-bg-subtle border-t border-border-subtle/40 flex items-center justify-between">
+                        <a href="https://github.com/wiratahelmi469-web1/portfolio" target="_blank" rel="noreferrer" class="font-mono text-xs font-medium text-accent-teal flex items-center space-x-1.5 hover:underline">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                            <span>Source Code</span>
+                        </a>
+                        <a href="#top" class="font-mono text-xs font-medium text-accent-teal flex items-center space-x-1.5 hover:underline">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            <span>Live Site</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section id="contact" class="py-24 bg-bg-primary relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-accent-teal/15 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative w-full flex flex-col items-center text-center">
+            
+            <span class="font-mono text-xs uppercase tracking-wider text-accent-teal block mb-3 reveal">
+                — Penghubung
+            </span>
+            <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-text-main mb-6 reveal">
+                Mari berkolaborasi.
+            </h2>
+            
+            <div class="w-10 h-[3px] rounded bg-gradient-to-r from-accent-teal to-accent-orange mb-12 reveal"></div>
+
+            <!-- Contact Card -->
+            <div class="reveal w-full max-w-[540px] bg-bg-card border border-border-subtle rounded-2xl p-8 md:p-10 shadow-2xl space-y-8">
+                <p class="font-sans text-base text-[#CDDEE9] leading-relaxed">
+                    Tertarik berkolaborasi atau ingin berdiskusi tentang proyek? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="mailto:wiratahelmi469@gmail.com" class="w-full sm:w-auto px-5 py-3 rounded-lg border border-border-subtle hover:border-accent-teal hover:text-accent-teal font-mono text-xs flex items-center justify-center space-x-2 transition-all duration-300">
+                        <svg class="w-4 h-4 text-accent-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Email Saya</span>
+                    </a>
+
+                    <a href="https://github.com/wiratahelmi469-web1" target="_blank" rel="noreferrer" class="w-full sm:w-auto px-5 py-3 rounded-lg border border-border-subtle hover:border-accent-teal hover:text-accent-teal font-mono text-xs flex items-center justify-center space-x-2 transition-all duration-300">
+                        <svg class="w-4 h-4 text-accent-orange" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/helmi-wirata-b461b4377/" target="_blank" rel="noreferrer" class="w-full sm:w-auto px-5 py-3 rounded-lg border border-border-subtle hover:border-accent-teal hover:text-accent-teal font-mono text-xs flex items-center justify-center space-x-2 transition-all duration-300">
+                        <svg class="w-4 h-4 text-[#D3ECF8]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer class="py-8 bg-bg-primary border-t border-border-subtle">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-1 font-mono text-xs text-text-muted">
+                <span>Dibuat dengan</span>
+                <span class="text-accent-teal inline-block animate-pulse">♥</span>
+                <span>oleh Helmi · 2025</span>
+            </div>
+            <div class="font-mono text-[10px] text-text-muted/60">
+                Deployed dynamically via Vercel · Static Single Page
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- 1. Terminal Sequence Animation Script ---
+        const terminalSequence = [
+            { type: 'input', text: 'cat welcome_message.txt' },
+            { type: 'output', text: 'Halo! Saya Helmi, mahasiswa Informatika.' },
+            { type: 'output', text: 'Spesialis Laravel, Next.js, & UI/UX.' },
+            { type: 'input', text: 'curl -s https://api.github.com/users/helmi' },
+            { type: 'output', text: '{ "status": "Ready to build scalable web applications." }' }
+        ];
+
+        const terminalContent = document.getElementById('terminal-content');
+        let currentLineIndex = 0;
+        let charIndex = 0;
+        let typedLines = [];
+
+        function renderTerminal() {
+            terminalContent.innerHTML = '';
+            
+            // Render completed lines
+            typedLines.forEach(line => {
+                const lineDiv = document.createElement('div');
+                if (line.startsWith('❯ ')) {
+                    lineDiv.className = 'text-text-main';
+                    lineDiv.innerHTML = `<span class="text-accent-teal mr-1">❯</span><span>${line.substring(2)}</span>`;
+                } else {
+                    lineDiv.className = 'text-text-muted';
+                    lineDiv.textContent = line;
+                }
+                terminalContent.appendChild(lineDiv);
+            });
+
+            // Render current line typing
+            if (currentLineIndex < terminalSequence.length) {
+                const currentObj = terminalSequence[currentLineIndex];
+                const activeDiv = document.createElement('div');
+                activeDiv.className = 'text-text-main';
+
+                if (currentObj.type === 'input') {
+                    const currentTypedText = currentObj.text.substring(0, charIndex);
+                    activeDiv.innerHTML = `<span class="text-accent-teal mr-1">❯</span><span>${currentTypedText}</span><span class="inline-block w-2 h-4 bg-accent-teal animate-blink ml-1"></span>`;
+                } else {
+                    // Output lines appear instantly or delayed slightly
+                    activeDiv.className = 'text-text-muted';
+                    activeDiv.textContent = currentObj.text;
+                }
+                terminalContent.appendChild(activeDiv);
+            } else {
+                // Done writing sequence - show a final active idle cursor
+                const finalCursorDiv = document.createElement('div');
+                finalCursorDiv.className = 'text-text-main flex items-center';
+                finalCursorDiv.innerHTML = `<span class="text-accent-teal mr-1">❯</span><span class="inline-block w-2 h-4 bg-accent-teal animate-blink"></span>`;
+                terminalContent.appendChild(finalCursorDiv);
+            }
+        }
+
+        function typeNext() {
+            if (currentLineIndex >= terminalSequence.length) return;
+
+            const currentObj = terminalSequence[currentLineIndex];
+
+            if (currentObj.type === 'input') {
+                if (charIndex < currentObj.text.length) {
+                    charIndex++;
+                    renderTerminal();
+                    setTimeout(typeNext, 45 + Math.random() * 40); // natural human typing speed
+                } else {
+                    // Finished writing this input - push to completed list
+                    typedLines.push('❯ ' + currentObj.text);
+                    currentLineIndex++;
+                    charIndex = 0;
+                    setTimeout(typeNext, 500); // short pause after command before executing/outputting
+                }
+            } else {
+                // Output type - print immediately
+                typedLines.push(currentObj.text);
+                currentLineIndex++;
+                renderTerminal();
+                setTimeout(typeNext, 600); // pause before starting next command line
+            }
+        }
+
+        // Run the terminal typing effect on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTerminal();
+            setTimeout(typeNext, 1000); // start after 1 sec
+        });
+
+        // --- 2. Mobile Nav Toggle Drawer Script ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 3. Scroll Reveal Transition Script ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            const triggerBottom = window.innerHeight * 0.85;
+            revealElements.forEach(el => {
+                const elTop = el.getBoundingClientRect().top;
+                if (elTop < triggerBottom) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        // Run check once on initial load to show above-the-fold content immediately
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkReveal, 200);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Helmi Portfolio",
+  "description": "Website portofolio modern untuk Helmi - Full-Stack Web Developer spesialis ekosistem Laravel",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

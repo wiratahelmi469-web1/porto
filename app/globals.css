@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0A0E1A;
+  --color-bg-card: #111827;
+  --color-bg-subtle: #161D2E;
+  --color-accent-teal: #00D4AA;
+  --color-accent-orange: #FF6B35;
+  --color-text-main: #E8F4F8;
+  --color-text-muted: #6B8FAB;
+  --color-border-subtle: rgba(0, 212, 170, 0.12);
+  
+  --font-sans: var(--font-sans), sans-serif;
+  --font-mono: var(--font-mono), monospace;
+  --font-serif: var(--font-serif), serif;
+}
+
+/* Custom Base / Utility Styles */
+.hero-grid {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 170, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 170, 0.04) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 50%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 50%, transparent 100%);
+}
+
+@keyframes blink {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Scroll / Entry Reveal System */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accessible Styles */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-blink {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Card Gradient Top Border On Hover styling pattern */
+.card-hover-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00D4AA, #FF6B35);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.card-hover-border:hover::before {
+  opacity: 1;
+}
+
+/* Glassmorphism Navigation */
+.nav-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(10, 14, 26, 0.85);
+  border-bottom: 1px solid rgba(0, 212, 170, 0.12);
+}
+
