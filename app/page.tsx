@@ -293,17 +293,71 @@ export default function PortfolioPage() {
               </div>
 
               <div className="pt-6 border-t border-border-subtle/40">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-accent-orange mb-3 flex items-center gap-1.5">
+                <h4 className="font-mono text-xs uppercase tracking-wider text-accent-orange mb-4 flex items-center gap-1.5">
                   <BookOpen className="w-3.5 h-3.5 text-accent-orange" />
                   Pendidikan
                 </h4>
-                <div className="bg-bg-card/40 border border-border-subtle/50 rounded-xl p-4 flex items-start gap-3">
-                  <div className="p-2 rounded bg-accent-teal/10 text-accent-teal font-mono text-xs font-bold shrink-0">
-                    2025
+                
+                <div className="relative border-l border-border-subtle/40 ml-3 pl-5 space-y-5">
+                  {/* SD */}
+                  <div className="relative group">
+                    <span className="absolute -left-[25.5px] top-2 flex h-2 w-2 rounded-full bg-bg-primary border border-accent-teal/50 group-hover:border-accent-teal transition-colors duration-300" />
+                    <div className="flex items-center gap-3">
+                      <div className="px-2 py-0.5 rounded bg-accent-teal/5 text-text-muted/70 font-mono text-[10px] shrink-0 select-none">
+                        &gt;_
+                      </div>
+                      <div>
+                        <h5 className="font-sans font-semibold text-text-main text-sm">SD Kebon Pedes 3</h5>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className="font-sans font-semibold text-text-main text-sm">STT Terpadu Nurul Fikri, Bogor</h5>
-                    <p className="font-sans text-xs text-[#AECCD9] mt-0.5">Informatika (2025 — Sekarang)</p>
+
+                  {/* SMP */}
+                  <div className="relative group">
+                    <span className="absolute -left-[25.5px] top-2 flex h-2 w-2 rounded-full bg-bg-primary border border-accent-teal/50 group-hover:border-accent-teal transition-colors duration-300" />
+                    <div className="flex items-center gap-3">
+                      <div className="px-2 py-0.5 rounded bg-accent-teal/5 text-text-muted/70 font-mono text-[10px] shrink-0 select-none">
+                        &gt;_
+                      </div>
+                      <div>
+                        <h5 className="font-sans font-semibold text-text-main text-sm">SMPN 3 Cibinong</h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SMK */}
+                  <div className="relative group">
+                    <span className="absolute -left-[25.5px] top-2 flex h-2 w-2 rounded-full bg-bg-primary border border-accent-teal/50 group-hover:border-accent-teal transition-colors duration-300" />
+                    <div className="flex items-center gap-3">
+                      <div className="px-2 py-0.5 rounded bg-accent-teal/10 text-accent-teal font-mono text-[10px] font-bold shrink-0">
+                        2024
+                      </div>
+                      <div>
+                        <h5 className="font-sans font-semibold text-text-main text-sm">SMK BOASH</h5>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* STT Terpadu Nurul Fikri */}
+                  <div className="relative group">
+                    <span className="absolute -left-[27.5px] top-2 flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-orange/30 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-accent-orange border border-bg-primary" />
+                    </span>
+                    <div className="bg-bg-card/40 border border-border-subtle/50 rounded-xl p-4 flex items-start gap-3 hover:border-accent-orange/30 transition-all duration-300">
+                      <div className="px-2 py-0.5 rounded bg-accent-orange/10 text-accent-orange font-mono text-[10px] font-bold shrink-0">
+                        2025
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h5 className="font-sans font-semibold text-text-main text-sm">STT Terpadu Nurul Fikri, Bogor</h5>
+                          <span className="text-[9px] font-mono uppercase tracking-wider text-accent-orange bg-accent-orange/10 border border-accent-orange/20 px-2 py-0.5 rounded font-semibold">
+                            Sedang Ditempuh
+                          </span>
+                        </div>
+                        <p className="font-sans text-xs text-[#AECCD9]">Informatika (2025 — Sekarang)</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
